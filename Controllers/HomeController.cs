@@ -19,8 +19,7 @@ namespace Project1.Controllers
         }
 
         public IActionResult Index()
-        {
-            int pageNum = 1;
+        {            
             return View();
         }
 
