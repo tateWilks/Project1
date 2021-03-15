@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+@*needs action in homecontroller*@
+@*Add in asp-for*@
+
+@model Project1.Models.SignUpModel
+
+<body>
+    <div class="signUp">
+        <h2>Sign Up for Available Times</h2>
+        <br />
+
+        <form asp-acton="SignUp" method="post">
+            <div>
+                <label @*asp-for="availableTime"*@>Available Times:</label>
+                <select name="availableTime" id="availableTime" @*asp-for="availableTime"*@>
+                    <option value="">Select One</option>
+                    <option value="8am">8:00 am</option>
+                    <option value="9am">9:00 am</option>
+                    <option value="10am">10:00 am</option>
+                    <option value="11am">11:00 am</option>
+                    <option value="12pm">12:00 pm</option>
+                    <option value="1pm">1:00 pm</option>
+                    <option value="2pm">2:00 pm</option>
+                    <option value="3pm">3:00 pm</option>
+                    <option value="4pm">4:00 pm</option>
+                    <option value="5pm">5:00 pm</option>
+                    <option value="6pm">6:00 pm</option>
+                    <option value="7pm">7:00 pm</option>
+                    <option value="8pm">8:00 pm</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <label @*asp-for="groupName"*@>Name of Group:</label>
+                <input id="groupName" @*asp-for="groupName"*@ />
+                <br />
+
+                <label @*asp-for="groupSize"*@>Size of Group:</label>
+                <input id="groupSize" @*asp-for="groupSize"*@ />
+                <br />
+
+                <label @*asp-for="email"*@>Email Address:</label>
+                <input id="email" @*asp-for="email"*@ />
+                <br />
+
+                <label @*asp-for="phone"*@>Phone Number:</label>
+                <input id="phone" @*asp-for="phone"*@ />
+                <br />
+            </div>
+
+            <input type="submit" value="Submit Information" id="submitInfoButton" />            
+            <div asp-validation-summary="All"></div>
+        </form>
+    </div>
+</body>

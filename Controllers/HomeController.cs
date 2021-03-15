@@ -19,13 +19,25 @@ namespace Project1.Controllers
         }
 
         public IActionResult Index()
-        {            
+        {     
             return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(SignUpModel appResponse)
+        {
+            return View("Index", appResponse);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
