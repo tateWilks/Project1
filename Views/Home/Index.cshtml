@@ -1,8 +1,47 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1 class="display-1 text-center">Layton Utah Temple Tours</h1>
+    <p class="text-muted">PLEASE SIGN-UP FOR SUNDAY TOURS ONLY. WE WILL SOON HAVE A NEW SCHEDULE SINCE WE HAVE BEEN ASKED TO STOP ALL OUTSIDE TOURS. Please review the available slots ON SUNDAY ONLY and click on the button to sign up. Use the "quantity" field to let us know how many people will be in your group. Thank you!</p>
+    <div class="d-flex flex-row ">
+        <div class="col-8">
+            <img class="img-fluid" src="~/img/temple.jpg" style="filter: saturate(1.4)" />
+            <div class="row">
+                <div class="col-6 p-2">
+                    <p>Please call <a href="tel:801-628-4488">801-628-4488</a> or email <a href="mailto:LaytonTempleTours@gmail.com">LaytonTempleTours@gmail.com</a> with questions or special requests.</p>
+                </div>
+                <div class="col-6 m-2">
+                    <a asp-controller="Home" asp-action="SignUp" class="btn btn-outline-primary btn-lg display-4">Sign Up</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mt-2">                
+                <ul class="list-group">
+                    <li class="list-group-item active"><h4 class="text-center">General Tour Instructions</h4></li>
+                    <li class="list-group-item">Masks are required</li>
+                    <li class="list-group-item">Park on Rosewood (west side of the temple) and meet at the Visitors Center trailer</li>
+                    <li class="list-group-item">Dress casual, except on Sunday</li>
+                </ul>
+            </div>
+            <div class="mt-2">                
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <h4 class="text-center">Special Accommodations</h4>
+                        <p>Check the appropriate box when signing up for a tour</p>
+                    </li>
+                    <li class="list-group-item">Spanish-speaking tours are available on Thursday, Friday, Saturday or Sunday</li>
+                </ul>
+            </div>
+            <div class="mt-2">                
+                <ul class="list-group">
+                    <li class="list-group-item active"><h4 class="text-center">Available Tours:</h4></li>
+                    <li class="list-group-item">Tour (Outdoor): We have been asked to discontinue outside tours at this time</li>
+                    <li class="list-group-item">Trailer Tour: All tours will be inside the trailer. Masks are required</li>
+                </ul>
+            </div>            
+        </div>
+    </div>    
 </div>
