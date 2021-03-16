@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,16 +12,18 @@ namespace Project1.Models
     {
 		[Key]
 		[Required]
-		public int GroupId { get; set; }
+		public int groupId { get; set; }
 		[Required]
 		public string groupName { get; set; }
 		[Required]
 		public string groupSize { get; set; }
 		[Required]
-		public string Email { get; set; }
+		public string email { get; set; }
 #nullable enable
-		public string? Phone
+		public string? phone { get; set; }
 
-		//public string availableTime { get; set; }
+		// how is the availableTime property going to work here?
+		// think I need to create a set and/or get method...
+		public TimeSpan availableTime { get; set; }
 	}
 }
