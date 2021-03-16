@@ -20,6 +20,7 @@ namespace Project1.Controllers
 
         public IActionResult Index()
         {     
+            // return the index view with some basic data
             return View();
         }
 
@@ -38,6 +39,13 @@ namespace Project1.Controllers
         public IActionResult SignUp(SignUpModel appResponse)
         {
             return View("Index", appResponse);
+        }
+
+        public IActionResult ViewAppointments()
+        {
+            //need a model here with the correct appointment data, likely will include the date/time, name of group, size, email, and phone
+            //will get this data and return to the view            
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
