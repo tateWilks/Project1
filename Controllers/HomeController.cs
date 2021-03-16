@@ -30,13 +30,25 @@ namespace Project1.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult AvailableTime()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult SignUp(SignUpModel appResponse)
+        public IActionResult AvailableTime(SignUpModel appResponse)
+        {
+            return View("GroupForm", appResponse);
+        }
+
+        [HttpGet]
+        public IActionResult GroupForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult GroupForm(SignUpModel appResponse)
         {
             return View("Index", appResponse);
         }
