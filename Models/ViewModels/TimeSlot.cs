@@ -8,8 +8,7 @@ namespace Project1.Models
     public class TimeSlot
     {
         public DateTime DateTimeSlot { get; set; }
-        #nullable enable
-        public bool? IsAvailable { get; set; }
+        public bool IsAvailable { get; set; } = true;
 
         public TimeSlot(DateTime date)
         {

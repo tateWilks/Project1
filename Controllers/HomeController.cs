@@ -68,7 +68,7 @@ namespace Project1.Controllers
             {
                 foreach(var NormalDay in datesList)
                 {
-                    if (DateTime.Compare(ScheduledDay, NormalDay.DateTimeSlot) == 0 || DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
+                    if (DateTime.Compare(ScheduledDay.availableTimes, NormalDay.DateTimeSlot) == 0 || DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
                     {
                         NormalDay.IsAvailable = false;
                     }
