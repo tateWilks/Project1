@@ -63,7 +63,7 @@ namespace Project1.Controllers
                 }
             }
 
-            //go through this loop for each item in the signups repo and compare with the dates listed - if they are the same, then the dates rendered in the view will be unavailable - else, available
+            //go through this loop for each item in the signups repo and compare with the dates listed - if they are the same, then the dates rendered in the view will be unavailable - else, the default : available
             foreach(var ScheduledDay in _repository.SignUps)
             {
                 foreach(var NormalDay in datesList)
@@ -71,10 +71,6 @@ namespace Project1.Controllers
                     if (DateTime.Compare(ScheduledDay.availableTimes, NormalDay.DateTimeSlot) == 0 || DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
                     {
                         NormalDay.IsAvailable = false;
-                    }
-                    else
-                    {
-                        NormalDay.IsAvailable = true;
                     }
                 }
             }
