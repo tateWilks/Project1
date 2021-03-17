@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,24 +11,31 @@ namespace Project1.Models
         // Have a value set to booked? when a time has been booked?
 
         // Properties
-        public TimeSpan EightAM { get; set; }
-        public TimeSpan NineAM { get; set; }
-        public TimeSpan TenAM { get; set; }
-        public TimeSpan ElevenAM { get; set; }
-        public TimeSpan TwelvePM { get; set; }
-        public TimeSpan OnePM { get; set; }
-        public TimeSpan TwoPM { get; set; }
-        public TimeSpan ThreePM { get; set; }
-        public TimeSpan FourPM { get; set; }
-        public TimeSpan FivePM { get; set; }
-        public TimeSpan SixPM { get; set; }
-        public TimeSpan SevenPM { get; set; }
-        public TimeSpan EightPM { get; set; }
+        [Key]
+        public int TimeId { get; set; }
+        public DateTime SelectedDate { get; set; }
+        public TimeSpan SelectTime { get; set; }
+        public bool IsSelected { get; set; }
+
+        //public TimeSpan EightAM { get; set; }
+        //public TimeSpan NineAM { get; set; }
+        //public TimeSpan TenAM { get; set; }
+        //public TimeSpan ElevenAM { get; set; }
+        //public TimeSpan TwelvePM { get; set; }
+        //public TimeSpan OnePM { get; set; }
+        //public TimeSpan TwoPM { get; set; }
+        //public TimeSpan ThreePM { get; set; }
+        //public TimeSpan FourPM { get; set; }
+        //public TimeSpan FivePM { get; set; }
+        //public TimeSpan SixPM { get; set; }
+        //public TimeSpan SevenPM { get; set; }
+        //public TimeSpan EightPM { get; set; }
 
 
         // Constructor
-        public AvailableTimes()
+        public AvailableTimes(int year, int month, int day)
         {
+            SelectedDate = new DateTime();
             EightAM = new DateTime(2021, 3, 16, 8, 0, 0).TimeOfDay;
             NineAM = new DateTime(2021, 3, 16, 9, 0, 0).TimeOfDay;
             TenAM = new DateTime(2021, 3, 16, 10, 0, 0).TimeOfDay;
