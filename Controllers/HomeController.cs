@@ -48,6 +48,8 @@ namespace Project1.Controllers
                 }
             }
 
+            //going to compare with the repository work, and then if it doesn't match it will be marked true. otherwise, false
+
             return View();
         }
 
