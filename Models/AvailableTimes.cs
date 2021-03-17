@@ -7,6 +7,8 @@ namespace Project1.Models
 {
     public class AvailableTimes
     {
+        // Have a value set to booked? when a time has been booked?
+
         // Properties
         public TimeSpan EightAM { get; set; }
         public TimeSpan NineAM { get; set; }
