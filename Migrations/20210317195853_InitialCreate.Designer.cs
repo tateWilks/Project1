@@ -9,8 +9,8 @@ using Project1.Models;
 namespace Project1.Migrations
 {
     [DbContext(typeof(SignUpContext))]
-    [Migration("20210317195056_Initial")]
-    partial class Initial
+    [Migration("20210317195853_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
