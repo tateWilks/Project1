@@ -6,7 +6,6 @@
 }
 
 @*need to finish set up in homecontroller*@
-@*Add in asp-for*@
 
 @model Project1.Models.AvailableTimes
 
@@ -17,8 +16,8 @@
 
         <form asp-action="AvailableTime" method="post">
             <div>
-                <label @*asp-for="SelectedDate"*@>Select Date:</label>
-                <select name="SelectedDate" id="SelectedDate" @*asp-for="SelectedDate"*@>
+                <label asp-for="SelectedDate">Select Date:</label>
+                <select name="SelectedDate" id="SelectedDate" asp-for="SelectedDate">
                     <option value="">Select One</option>
                     <option value="sun21">Sunday March 21st</option>
                     <option value="mon22">Monday March 22nd</option>
@@ -30,8 +29,8 @@
                 </select>
                 <br />
 
-                <label @*asp-for="availableTime"*@>Available Times:</label>
-                <select name="availableTime" id="availableTime" @*asp-for="availableTime"*@>
+                <label asp-for="SelectTime">Available Times:</label>
+                <select name="availableTime" id="availableTime" asp-for="SelectTime">
                     <option value="">Select One</option>
                     <option value="8am">8:00 am</option>
                     <option value="9am">9:00 am</option>
