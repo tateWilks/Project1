@@ -33,22 +33,22 @@ namespace Project1.Models
 
 
         // Constructor
-        public AvailableTimes(int year, int month, int day)
-        {
-            SelectedDate = new DateTime();
-            EightAM = new DateTime(2021, 3, 16, 8, 0, 0).TimeOfDay;
-            NineAM = new DateTime(2021, 3, 16, 9, 0, 0).TimeOfDay;
-            TenAM = new DateTime(2021, 3, 16, 10, 0, 0).TimeOfDay;
-            ElevenAM = new DateTime(2021, 3, 16, 11, 0, 0).TimeOfDay;
-            TwelvePM = new DateTime(2021, 3, 16, 12, 0, 0).TimeOfDay;
-            OnePM = new DateTime(2021, 3, 16, 13, 0, 0).TimeOfDay;
-            TwoPM = new DateTime(2021, 3, 16, 14, 0, 0).TimeOfDay;
-            ThreePM = new DateTime(2021, 3, 16, 15, 0, 0).TimeOfDay;
-            FourPM = new DateTime(2021, 3, 16, 16, 0, 0).TimeOfDay;
-            FivePM = new DateTime(2021, 3, 16, 17, 0, 0).TimeOfDay;
-            SixPM = new DateTime(2021, 3, 16, 18, 0, 0).TimeOfDay;
-            SevenPM = new DateTime(2021, 3, 16, 19, 0, 0).TimeOfDay;
-            EightPM = new DateTime(2021, 3, 16, 20, 0, 0).TimeOfDay;
-        }
+        //public AvailableTimes(int year, int month, int day)
+        //{
+        //    SelectedDate = new DateTime();
+        //    EightAM = new DateTime(2021, 3, 16, 8, 0, 0).TimeOfDay;
+        //    NineAM = new DateTime(2021, 3, 16, 9, 0, 0).TimeOfDay;
+        //    TenAM = new DateTime(2021, 3, 16, 10, 0, 0).TimeOfDay;
+        //    ElevenAM = new DateTime(2021, 3, 16, 11, 0, 0).TimeOfDay;
+        //    TwelvePM = new DateTime(2021, 3, 16, 12, 0, 0).TimeOfDay;
+        //    OnePM = new DateTime(2021, 3, 16, 13, 0, 0).TimeOfDay;
+        //    TwoPM = new DateTime(2021, 3, 16, 14, 0, 0).TimeOfDay;
+        //    ThreePM = new DateTime(2021, 3, 16, 15, 0, 0).TimeOfDay;
+        //    FourPM = new DateTime(2021, 3, 16, 16, 0, 0).TimeOfDay;
+        //    FivePM = new DateTime(2021, 3, 16, 17, 0, 0).TimeOfDay;
+        //    SixPM = new DateTime(2021, 3, 16, 18, 0, 0).TimeOfDay;
+        //    SevenPM = new DateTime(2021, 3, 16, 19, 0, 0).TimeOfDay;
+        //    EightPM = new DateTime(2021, 3, 16, 20, 0, 0).TimeOfDay;
+        //}
     }
 }
