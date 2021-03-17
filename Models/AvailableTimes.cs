@@ -12,10 +12,13 @@ namespace Project1.Models
 
         // Properties
         [Key]
+        [Required]
         public int TimeId { get; set; }
+        [Required]
         public DateTime SelectedDate { get; set; }
+        [Required]
         public TimeSpan SelectTime { get; set; }
-        public bool IsSelected { get; set; }
+        public bool IsAvailable { get; set; }
 
         //public TimeSpan EightAM { get; set; }
         //public TimeSpan NineAM { get; set; }
