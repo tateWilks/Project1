@@ -12,9 +12,12 @@ namespace Project1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private ISignUpRepository _repository;
+        public int iPageSize = 12;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISignUpRepository repo)
         {
+            _repository = repo; 
             _logger = logger;
         }
 
@@ -30,8 +33,23 @@ namespace Project1.Controllers
         }
 
         [HttpGet]
-        public IActionResult AvailableTime()
+        public IActionResult AvailableTime(int iPageNum = 1)
         {
+            IEnumerable<AvailableTimes> AllTimes = new List<AvailableTimes>();
+            DateTime today = DateTime.Now;                                
+
+            List<DateTime> datesList = new List<DateTime>();
+
+            for (int i = today.Day; i < today.Day + 7; i++)
+            {
+                for (int j = 8; j <= 20; j++)
+                {
+                    datesList.Add(new DateTime(today.Year, today.Month, i, j, 0, 0));
+                }
+            }
+
+            //going to compare with the repository work, and then if it doesn't match it will be marked true. otherwise, false
+
             return View();
         }
 
