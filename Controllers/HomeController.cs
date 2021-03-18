@@ -83,6 +83,18 @@ namespace Project1.Controllers
             }
             //going to compare with the repository work, and then if it doesn't match it will be marked true. otherwise, false
 
+            //want some paging in the main view of the times
+            /*return View(new TimeSlotViewModel
+            {
+                TimeSlots = datesList,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = iPageNum,
+                    ItemsPerPage = iPageSize,
+                    TotalNumItems = _repository.SignUps.Count()
+                }
+            });*/
+
             return View(datesList);
         }
 
@@ -116,7 +128,7 @@ namespace Project1.Controllers
                 }                
 
                 //no idea wtf i'm doing here
-                string connString = @"DataSource=C:\Users\Jaxon\source\repos\Project1SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
+                string connString = @"DataSource=C:\Users\caden\source\repos\Project1\SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
                 SqliteConnection sql_conn = new SqliteConnection(connString); //create a connection with the model
 
                 sql_conn.Open(); //open the connection
@@ -140,8 +152,8 @@ namespace Project1.Controllers
                 }
 
                 sql_conn.Close();
-            }
-            return View("Index");
+                return View("Index");
+            }            
         }
 
         public IActionResult ViewAppointments(int pageNum = 1)
