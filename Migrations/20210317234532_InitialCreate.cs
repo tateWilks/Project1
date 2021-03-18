@@ -32,7 +32,7 @@ namespace Project1.Migrations
                     groupSize = table.Column<string>(type: "TEXT", nullable: false),
                     email = table.Column<string>(type: "TEXT", nullable: false),
                     phone = table.Column<string>(type: "TEXT", nullable: true),
-                    availableTime = table.Column<TimeSpan>(type: "TEXT", nullable: false)
+                    availableTimes = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

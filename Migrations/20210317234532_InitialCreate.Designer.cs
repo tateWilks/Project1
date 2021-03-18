@@ -9,7 +9,7 @@ using Project1.Models;
 namespace Project1.Migrations
 {
     [DbContext(typeof(SignUpContext))]
-    [Migration("20210317164231_InitialCreate")]
+    [Migration("20210317234532_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace Project1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<TimeSpan>("availableTime")
+                    b.Property<DateTime>("availableTimes")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("email")

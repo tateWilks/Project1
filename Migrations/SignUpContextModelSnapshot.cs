@@ -42,7 +42,7 @@ namespace Project1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<TimeSpan>("availableTime")
+                    b.Property<DateTime>("availableTimes")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("email")

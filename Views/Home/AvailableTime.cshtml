@@ -7,14 +7,48 @@
 
 @*need to finish set up in homecontroller*@
 
-@model Project1.Models.AvailableTimes
+@*model Project1.Models.AvailableTimes *@
+@model IEnumerable<TimeSlot>
 
 <body>
     <div>
         <h2>Sign Up for Available Times</h2>
         <br />
 
-        <form asp-action="AvailableTime" method="post">
+        @* This is the section that I am using to test this, and if it works, cool. Otherwise, rip *@
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Schedule</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (TimeSlot t in Model)
+                {
+                <tr>
+                    <td>@t.DateTimeSlot.ToString("MMMM dd")</td>
+                    <td>@t.DateTimeSlot.ToString("h:mm tt")</td>
+                    <td>
+                        @if (t.IsAvailable) 
+                        {
+                            <form asp-controller="Home" asp-action="AvailableTime" method="post">
+                                <button type="submit" value="@t.DateTimeSlot" class="btn btn-outline-success">Schedule</button>
+                            </form>
+                        } 
+                        else
+                        {
+                            <button type="button" disabled class="btn btn-outline-secondary">Not Available</button>
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>            
+        </table>
+
+        @* end my section *@
+        @*<form asp-action="AvailableTime" method="post">
             <div>
                 <label asp-for="SelectedDate">Select Date:</label>
                 <select name="SelectedDate" id="SelectedDate" asp-for="SelectedDate">
@@ -51,6 +85,6 @@
 
             <input type="submit" value="Submit Time" id="submitTimeButton" />            
             <div asp-validation-summary="All"></div>
-        </form>
+        </form>*@
     </div>
 </body>

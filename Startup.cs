@@ -29,7 +29,7 @@ namespace Project1
 
             services.AddDbContext<SignUpContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:Project1Connection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:SignUpConnection"]);
             });
 
             services.AddScoped<ISignUpRepository, EFSignUpRepository>();
