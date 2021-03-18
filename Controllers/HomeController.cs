@@ -83,6 +83,18 @@ namespace Project1.Controllers
             }
             //going to compare with the repository work, and then if it doesn't match it will be marked true. otherwise, false
 
+            //want some paging in the main view of the times
+            /*return View(new TimeSlotViewModel
+            {
+                TimeSlots = datesList,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = iPageNum,
+                    ItemsPerPage = iPageSize,
+                    TotalNumItems = _repository.SignUps.Count()
+                }
+            });*/
+
             return View(datesList);
         }
 
@@ -114,9 +126,8 @@ namespace Project1.Controllers
                         appResponse.groupId++;
                     }
                 }                
-
-                //no idea wtf i'm doing here
-                string connString = @"DataSource=C:\Users\lilia\source\repos\Project1\SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
+                
+                string connString = @"DataSource=C:\Users\Tatew\IS_Core\Winter\IS413\source\Project1\SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
                 SqliteConnection sql_conn = new SqliteConnection(connString); //create a connection with the model
 
                 sql_conn.Open(); //open the connection
@@ -128,7 +139,7 @@ namespace Project1.Controllers
                 cmd.Parameters.AddWithValue("@groupName", appResponse.groupName);
                 cmd.Parameters.AddWithValue("@groupSize", appResponse.groupSize);
                 cmd.Parameters.AddWithValue("@email", appResponse.email);
-                cmd.Parameters.AddWithValue("@phone", appResponse.phone);
+                cmd.Parameters.AddWithValue("@phone", System.String.IsNullOrEmpty(appResponse.phone) ? null : appResponse.phone);
                 cmd.Parameters.AddWithValue("@availableTimes", appResponse.availableTimes);
                 try
                 {
@@ -140,25 +151,15 @@ namespace Project1.Controllers
                 }
 
                 sql_conn.Close();
-            }
-            return View("Index");
+                return View("Index");
+            }            
         }
 
         public IActionResult ViewAppointments(int pageNum = 1)
         {
             //need a model here with the correct appointment data, likely will include the date/time, name of group, size, email, and phone
             //will get this data and return to the view            
-            return View(new SignUpViewModel
-            {
-                SignUps = _repository.SignUps,
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = pageNum,
-                    ItemsPerPage = iPageSize,
-                    TotalNumItems = _repository.SignUps.Count() //if the category is null, grab everything for total items. 
-                }
-            }
-            );
+            return View(_repository.SignUps);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
