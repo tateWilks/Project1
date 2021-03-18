@@ -1,4 +1,5 @@
-﻿@model Project1.Models.ViewModels.SignUpViewModel
+﻿
+@model IEnumerable<Project1.Models.SignUpModel>
 <div>
     <h2>Set Appointments</h2>
 
@@ -10,7 +11,7 @@
 
         <tbody>
 
-            @foreach (var x in Model.SignUps)
+            @foreach (Project1.Models.SignUpModel x in Model)
             {
                 <tr>
                     <td>@x.groupName</td>

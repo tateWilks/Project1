@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project1.Models;
+using Project1.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -74,8 +75,12 @@ namespace Project1.Controllers
         public IActionResult ViewAppointments()
         {
             //need a model here with the correct appointment data, likely will include the date/time, name of group, size, email, and phone
-            //will get this data and return to the view            
-            return View();
+            //will get this data and return to the view 
+
+            return View(new SignUpViewModel
+            {
+                SignUps = _repository.SignUps
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
