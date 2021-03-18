@@ -30,7 +30,7 @@
                 <input id="Phone" asp-for="phone" />
                 <br />
 
-                <input hidden asp-for="availableTimes" value="@ViewBag.TimeSelected" />
+                <input hidden asp-for="availableTimes" value="@ViewData["TimeSelected"]" />
             </div>
             <br />
 
