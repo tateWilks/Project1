@@ -6,7 +6,7 @@
 
     <table>
         <thead>
-            <tr><th>Group Name</th><th>Group Size</th><th>Email</th></tr>
+            <tr><th class="p-1">Group Name</th><th class="p-2">Time</th><th class="p-3">Group Size</th><th class="p-4">Email</th></tr>
         </thead>
 
         <tbody>
@@ -14,9 +14,11 @@
             @foreach (Project1.Models.SignUpModel x in Model)
             {
                 <tr>
-                    <td>@x.groupName</td>
-                    <td>@x.groupSize</td>
-                    <td>@x.email</td>
+                    <td class="p-1">@x.groupName</td>
+                    <td class="p-2">@x.availableTimes</td>
+                    <td class="p-3">@x.groupSize</td>
+                    <td class="p-4">@x.email</td>
+                    
                 </tr>
             }
 
