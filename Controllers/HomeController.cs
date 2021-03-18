@@ -128,7 +128,7 @@ namespace Project1.Controllers
                 }                
 
                 //no idea wtf i'm doing here
-                string connString = @"DataSource=C:\Users\caden\source\repos\Project1\SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
+                string connString = @"DataSource=C:\Users\Jaxon\source\repos\Project1SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
                 SqliteConnection sql_conn = new SqliteConnection(connString); //create a connection with the model
 
                 sql_conn.Open(); //open the connection
