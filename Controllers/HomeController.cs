@@ -83,6 +83,18 @@ namespace Project1.Controllers
             }
             //going to compare with the repository work, and then if it doesn't match it will be marked true. otherwise, false
 
+            //want some paging in the main view of the times
+            /*return View(new TimeSlotViewModel
+            {
+                TimeSlots = datesList,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = iPageNum,
+                    ItemsPerPage = iPageSize,
+                    TotalNumItems = _repository.SignUps.Count()
+                }
+            });*/
+
             return View(datesList);
         }
 
@@ -140,8 +152,8 @@ namespace Project1.Controllers
                 }
 
                 sql_conn.Close();
-            }
-            return View("Index");
+                return View("Index");
+            }            
         }
 
         public IActionResult ViewAppointments(int pageNum = 1)
