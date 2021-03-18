@@ -86,12 +86,9 @@ namespace Project1.Controllers
 
         [HttpPost]
         public IActionResult AvailableTime(DateTime timeResponse)
-        {            
-            SignUpModel response = new SignUpModel
-            {
-                                
-            }
-            return View("GroupForm", response);
+        {
+            ViewData["TimeSelected"] = timeResponse;
+            return View("GroupForm", timeResponse);
         }
 
         [HttpGet]
