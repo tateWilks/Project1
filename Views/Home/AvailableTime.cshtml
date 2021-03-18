@@ -32,7 +32,8 @@
                         @if (t.IsAvailable) 
                         {
                             <form asp-controller="Home" asp-action="AvailableTime" method="post">
-                                <button type="submit" value="@t.DateTimeSlot" class="btn btn-outline-success">Schedule</button>
+                                <input hidden value="@t.DateTimeSlot" name="timeResponse" />
+                                <button type="submit" class="btn btn-outline-success">Schedule</button>
                             </form>
                         } 
                         else

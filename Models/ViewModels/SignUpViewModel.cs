@@ -8,7 +8,7 @@ namespace Project1.Models.ViewModels
     public class SignUpViewModel
     {
         public IEnumerable<SignUpModel> SignUps { get; set; }
-        public AvailableTimes AvailableTimes { get; set; }
+        //public AvailableTimes AvailableTimes { get; set; }
         public PagingInfo PagingInfo { get; set; }
 
         // in the controller, do what you did in the WaterProject

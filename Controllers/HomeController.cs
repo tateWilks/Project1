@@ -87,9 +87,9 @@ namespace Project1.Controllers
         }
 
         [HttpPost]
-        public IActionResult AvailableTime(DateTime timeResponse)
+        public IActionResult AvailableTime(DateTime timeResponse) //make sure the name matches the parameter
         {
-            ViewData["TimeSelected"] = timeResponse;
+            ViewBag.TimeResponse = timeResponse;
             return View("GroupForm");
         }
 
@@ -108,33 +108,57 @@ namespace Project1.Controllers
             }
             else
             {
-                //no idea wtf i'm doing here
-                SqliteConnection sql_conn = new SqliteConnection(); //"DataSource=SignUpDb.sqlite";
+                foreach (var signup in _repository.SignUps)
+                {
+                    if (appResponse.groupId == signup.groupId) {
+                        appResponse.groupId++;
+                    }
+                }                
 
-                SqliteCommand insertSQL = new SqliteCommand("INSERT INTO SIGNUPS (groupId, groupName, groupSize, email, phone, availableTimes) VALUES (?,?,?,?,?, ?)", sql_conn);
-                insertSQL.Parameters.AddWithValue("groupId", appResponse.groupId);
-                insertSQL.Parameters.Add(appResponse.groupName);
-                insertSQL.Parameters.Add(appResponse.groupSize);
-                insertSQL.Parameters.Add(appResponse.email);
-                insertSQL.Parameters.Add(appResponse.phone);
-                insertSQL.Parameters.Add(ViewData["TimeSelected"]);
+                //no idea wtf i'm doing here
+                string connString = @"DataSource=C:\Users\Tatew\IS_Core\Winter\IS413\source\Project1\SignUpDb.sqlite"; //need to change this to your own DB connection string, it works for me but probably won't work for you if you don't change it
+                SqliteConnection sql_conn = new SqliteConnection(connString); //create a connection with the model
+
+                sql_conn.Open(); //open the connection
+
+                SqliteCommand cmd = sql_conn.CreateCommand(); //create a new command to run
+
+                cmd.CommandText = "INSERT INTO SIGNUPS (groupId, groupName, groupSize, email, phone, availableTimes) VALUES (@groupId, @groupName, @groupSize, @email, @phone, @availableTimes)";
+                cmd.Parameters.AddWithValue("@groupId", appResponse.groupId);
+                cmd.Parameters.AddWithValue("@groupName", appResponse.groupName);
+                cmd.Parameters.AddWithValue("@groupSize", appResponse.groupSize);
+                cmd.Parameters.AddWithValue("@email", appResponse.email);
+                cmd.Parameters.AddWithValue("@phone", appResponse.phone);
+                cmd.Parameters.AddWithValue("@availableTimes", appResponse.availableTimes);
                 try
                 {
-                    insertSQL.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
+
+                sql_conn.Close();
             }
             return View("Index");
         }
 
-        public IActionResult ViewAppointments()
+        public IActionResult ViewAppointments(int pageNum = 1)
         {
             //need a model here with the correct appointment data, likely will include the date/time, name of group, size, email, and phone
             //will get this data and return to the view            
-            return View();
+            return View(new SignUpViewModel
+            {
+                SignUps = _repository.SignUps,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = iPageSize,
+                    TotalNumItems = _repository.SignUps.Count() //if the category is null, grab everything for total items. 
+                }
+            }
+            );
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
