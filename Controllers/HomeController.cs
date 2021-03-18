@@ -64,11 +64,11 @@ namespace Project1.Controllers
             }
 
             //go through this loop for each item in the signups repo and compare with the dates listed - if they are the same, then the dates rendered in the view will be unavailable - else, the default : available
-            foreach(var ScheduledDay in _repository.SignUps)
+            foreach(var signUp in _repository.SignUps)
             {
                 foreach(var NormalDay in datesList)
                 {
-                    if (DateTime.Compare(ScheduledDay.availableTimes, NormalDay.DateTimeSlot) == 0 || DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
+                    if (DateTime.Compare(signUp.availableTimes, NormalDay.DateTimeSlot) == 0 || DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
                     {
                         NormalDay.IsAvailable = false;
                     }
@@ -80,14 +80,18 @@ namespace Project1.Controllers
         }
 
         [HttpPost]
-        public IActionResult AvailableTime(SignUpModel appResponse)
+        public IActionResult AvailableTime(DateTime timeResponse)
         {
-            return View("GroupForm", appResponse);
+            return View("GroupForm", timeResponse);
         }
 
         [HttpGet]
         public IActionResult GroupForm()
         {
+            if (ModelState.IsValid)
+            {
+                //need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
+            }
             return View();
         }
 
