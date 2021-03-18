@@ -10,6 +10,10 @@
 <body>
     <div>
         <h2>Enter Group Info</h2>        
+        <br />
+
+        @*Display time of appointment*@
+        <p><b>Appointment Time:</b> @ViewBag.TimeResponse</p>
 
         <form asp-action="GroupForm" method="post">
             <div>
