@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Project1.Models
 {
+    // Interface template (not a class)
     public interface ISignUpRepository
     {
         IQueryable<SignUpModel> SignUps { get; }        
