@@ -139,7 +139,7 @@ namespace Project1.Controllers
                 cmd.Parameters.AddWithValue("@groupName", appResponse.groupName);
                 cmd.Parameters.AddWithValue("@groupSize", appResponse.groupSize);
                 cmd.Parameters.AddWithValue("@email", appResponse.email);
-                cmd.Parameters.AddWithValue("@phone", System.String.IsNullOrEmpty(appResponse.phone) ? null : appResponse.phone);
+                cmd.Parameters.AddWithValue("@phone", System.String.IsNullOrEmpty(appResponse.phone) ? "NULL" : appResponse.phone);
                 cmd.Parameters.AddWithValue("@availableTimes", appResponse.availableTimes);
                 try
                 {
