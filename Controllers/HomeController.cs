@@ -88,7 +88,7 @@ namespace Project1.Controllers
         public IActionResult AvailableTime(DateTime timeResponse)
         {
             ViewData["TimeSelected"] = timeResponse;
-            return View("GroupForm", timeResponse);
+            return View("GroupForm");
         }
 
         [HttpGet]
@@ -100,11 +100,15 @@ namespace Project1.Controllers
         [HttpPost]
         public IActionResult GroupForm(SignUpModel appResponse)
         {
-            if (ModelState.IsValid)
-            {
-                
+            
 
+            if (!ModelState.IsValid)
+            {               
                 return View();//need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
+            }
+            else
+            {
+                //_repository.SignUps.Add(appResponse);
             }
             return View("Index", appResponse);
         }

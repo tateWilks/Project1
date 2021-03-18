@@ -7,6 +7,6 @@ namespace Project1.Models
 {
     public interface ISignUpRepository
     {
-        IQueryable<SignUpModel> SignUps { get; }
+        IQueryable<SignUpModel> SignUps { get; }        
     }
 }
