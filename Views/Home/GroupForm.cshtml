@@ -9,8 +9,7 @@
 
 <body>
     <div>
-        <h2>Enter Group Info</h2>
-        <br />
+        <h2>Enter Group Info</h2>        
 
         <form asp-action="GroupForm" method="post">
             <div>
@@ -27,10 +26,10 @@
                 <br />
 
                 <label asp-for="phone">Phone Number:</label>
-                <input id="Phone" asp-for="phone" />
+                <input id="Phone" placeholder="Optional" asp-for="phone" />
                 <br />
 
-                <input hidden asp-for="availableTimes" value="@ViewData["TimeSelected"]" />
+                <input hidden type="datetime" asp-for="availableTimes" value="@ViewBag.TimeResponse" id="TimeResponse" />
             </div>
             <br />
 
@@ -38,4 +37,5 @@
             <div asp-validation-summary="All"></div>
         </form>
     </div>
+    <script src="~/js/regulator.js"></script>
 </body>
