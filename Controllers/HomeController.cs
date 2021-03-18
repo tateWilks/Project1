@@ -41,9 +41,9 @@ namespace Project1.Controllers
             //make a list of available time classes, don't set the IsAvailable attribute yet - use the view model TimeSlot.cs
             List<TimeSlot> datesList = new List<TimeSlot>();
 
-            //this loop will go through and add all the times to the list that we will generate to show a week schedule
-            for (int i = today.Day; i < today.Day + 20; i++)
-            {
+            //this loop will go through and add all the times to the list that we will generate to show a week schedule            
+            for (int i = 0; i < + 7; i++)
+            {                
                 for (int j = 8; j <= 20; j++)
                 {
                     //make sure that we're keeping the days/months/years accurate
@@ -60,15 +60,19 @@ namespace Project1.Controllers
 
                     //datesList.Add(Availtime); //this will be used if we stick with using the available times class
                     datesList.Add(new TimeSlot(nextDateTime));                                            
-                }
+                }                
             }
 
             //go through this loop for each item in the signups repo and compare with the dates listed - if they are the same, then the dates rendered in the view will be unavailable - else, the default : available
-            foreach(var signUp in _repository.SignUps)
+            foreach(var NormalDay in datesList)
             {
-                foreach(var NormalDay in datesList)
+                if (DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
                 {
-                    if (DateTime.Compare(signUp.availableTimes, NormalDay.DateTimeSlot) == 0 || DateTime.Compare(NormalDay.DateTimeSlot, DateTime.Now) <= 0)
+                    NormalDay.IsAvailable = false;
+                }
+                foreach (var signUp in _repository.SignUps)
+                {
+                    if (DateTime.Compare(signUp.availableTimes, NormalDay.DateTimeSlot) == 0)
                     {
                         NormalDay.IsAvailable = false;
                     }
@@ -87,17 +91,17 @@ namespace Project1.Controllers
 
         [HttpGet]
         public IActionResult GroupForm()
-        {
-            if (ModelState.IsValid)
-            {
-                //need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
-            }
+        {            
             return View();
         }
 
         [HttpPost]
         public IActionResult GroupForm(SignUpModel appResponse)
         {
+            if (ModelState.IsValid)
+            {
+                //need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
+            }
             return View("Index", appResponse);
         }
 
