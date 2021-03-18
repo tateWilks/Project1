@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project1.Models;
+using Project1.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -85,8 +86,12 @@ namespace Project1.Controllers
 
         [HttpPost]
         public IActionResult AvailableTime(DateTime timeResponse)
-        {
-            return View("GroupForm", timeResponse);
+        {            
+            SignUpModel response = new SignUpModel
+            {
+                                
+            }
+            return View("GroupForm", response);
         }
 
         [HttpGet]
@@ -100,7 +105,9 @@ namespace Project1.Controllers
         {
             if (ModelState.IsValid)
             {
-                //need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
+                
+
+                return View();//need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
             }
             return View("Index", appResponse);
         }
