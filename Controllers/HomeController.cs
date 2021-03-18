@@ -3,8 +3,10 @@ using Microsoft.Extensions.Logging;
 using Project1.Models;
 using Project1.Models.ViewModels;
 using System;
+using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -99,18 +101,33 @@ namespace Project1.Controllers
 
         [HttpPost]
         public IActionResult GroupForm(SignUpModel appResponse)
-        {
-            
-
+        {            
             if (!ModelState.IsValid)
             {               
                 return View();//need some kind of storage class to hold the instances, and then you can cycle through that to show which times have been scheduled
             }
             else
             {
-                //_repository.SignUps.Add(appResponse);
+                //no idea wtf i'm doing here
+                SqliteConnection sql_conn = new SqliteConnection(); //"DataSource=SignUpDb.sqlite";
+
+                SqliteCommand insertSQL = new SqliteCommand("INSERT INTO SIGNUPS (groupId, groupName, groupSize, email, phone, availableTimes) VALUES (?,?,?,?,?, ?)", sql_conn);
+                insertSQL.Parameters.AddWithValue("groupId", appResponse.groupId);
+                insertSQL.Parameters.Add(appResponse.groupName);
+                insertSQL.Parameters.Add(appResponse.groupSize);
+                insertSQL.Parameters.Add(appResponse.email);
+                insertSQL.Parameters.Add(appResponse.phone);
+                insertSQL.Parameters.Add(ViewData["TimeSelected"]);
+                try
+                {
+                    insertSQL.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
             }
-            return View("Index", appResponse);
+            return View("Index");
         }
 
         public IActionResult ViewAppointments()
